@@ -2,6 +2,13 @@
 
 Клиентское приложение на React для работы с API сервиса «СКАН» (Interfax): авторизация по токену → параметры поиска → результаты.
 
+**🔗 Live Demo**: [https://SanyBlagorodny.github.io/scan-client/](https://SanyBlagorodny.github.io/scan-client/)
+
+[![GitHub license](https://img.shields.io/github/license/SanyBlagorodny/scan-client)](https://github.com/SanyBlagorodny/scan-client/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/SanyBlagorodny/scan-client)](https://github.com/SanyBlagorodny/scan-client/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/SanyBlagorodny/scan-client)](https://github.com/SanyBlagorodny/scan-client/network)
+[![GitHub issues](https://img.shields.io/github/issues/SanyBlagorodny/scan-client)](https://github.com/SanyBlagorodny/scan-client/issues)
+
 ## 🚀 О проекте
 
 **СКАН** — это сервис поиска публикаций о компаниях по ИНН в средствах массовой информации. Проект разработан как демонстрация навыков современной фронтенд-разработки.
