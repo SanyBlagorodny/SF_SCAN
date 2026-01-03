@@ -1,7 +1,14 @@
 {
-  "name": "scan",
-  "version": "0.1.0",
+  "name": "scan-client",
+  "version": "1.0.0",
+  "description": "Frontend client for SCAN publication search service",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SanyBlagorodny/scan-client.git"
+  },
+  "author": "SanyBlagorodny",
+  "license": "MIT",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
