@@ -2,7 +2,7 @@
 
 Клиентское приложение на React для работы с API сервиса «СКАН» (Interfax): авторизация по токену → параметры поиска → результаты.
 
-**🔗 Live Demo**: [https://SanyBlagorodny.github.io/scan-client/](https://SanyBlagorodny.github.io/scan-client/)
+**🔗 Live Demo**: [https://SanyBlagorodny.github.io/SF_SCAN/](https://SanyBlagorodny.github.io/SF_SCAN/)
 
 [![GitHub license](https://img.shields.io/github/license/SanyBlagorodny/scan-client)](https://github.com/SanyBlagorodny/scan-client/blob/main/LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/SanyBlagorodny/scan-client)](https://github.com/SanyBlagorodny/scan-client/stargazers)
@@ -36,8 +36,8 @@
 
 ```bash
 # Клонирование репозитория
-git clone https://github.com/SanyBlagorodny/scan-client.git
-cd scan-client
+git clone https://github.com/SanyBlagorodny/SF_SCAN.git
+cd SF_SCAN
 
 # Установка зависимостей
 npm install
@@ -153,7 +153,7 @@ serve -s build
    ```
 3. **Добавьте удаленный репозиторий**:
    ```bash
-   git remote add origin https://github.com/SanyBlagorodny/scan-client.git
+   git remote add origin https://github.com/SanyBlagorodny/SF_SCAN.git
    ```
 4. **Отправьте код на GitHub**:
    ```bash
@@ -165,7 +165,7 @@ serve -s build
    - Выберите ветку: main
    - Сохраните
 
-Проект будет доступен по адресу: `https://sanyblagorodny.github.io/scan-client`
+Проект будет доступен по адресу: `https://SanyBlagorodny.github.io/SF_SCAN`
 
 ## 📝 Лицензия
 

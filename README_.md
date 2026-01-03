@@ -29,8 +29,8 @@
 
 ```bash
 # Клонирование репозитория
-git clone https://github.com/SanyBlagorodny/scan-client.git
-cd scan-client
+git clone https://github.com/SanyBlagorodny/SF_SCAN.git
+cd SF_SCAN
 
 # Установка зависимостей
 npm install
