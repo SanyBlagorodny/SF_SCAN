@@ -4,7 +4,6 @@ import { useAuth } from './context/AuthContext';
 
 import './App.css';
 
-
 import './fonts/ferry.otf';
 import './fonts/InterRegular.ttf';
 import './fonts/InterMedium.ttf';
@@ -16,6 +15,7 @@ import Footer from './components/Footer/Footer';
 import Authorization from './components/Authorization/Authorization';
 import Search from './components/Search/Search';
 import SearchResults from './components/SearchResults/SearchResults';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import user_pic_example from './assets/user_pic_example.png';
 
 function App() {
@@ -26,8 +26,8 @@ function App() {
 
   useEffect(() => {
     if (!isLoggedIn) {
-        console.log("Пользователь не залогинен, обновите UI");
-      }
+      console.log("Пользователь не залогинен, обновите UI");
+    }
   }, [isLoggedIn]);
 
   useEffect(() => {
@@ -37,15 +37,35 @@ function App() {
   return (
     <Router>
       <div className="app-container">
-        <Header isLoggedIn={isLoggedIn} userName={userName} setUserName={setUserName} userPicture={userPicture} setUserPicture={setUserPicture} />
+        <Header 
+          isLoggedIn={isLoggedIn} 
+          userName={userName} 
+          setUserName={setUserName} 
+          userPicture={userPicture} 
+          setUserPicture={setUserPicture} 
+        />
         <main>
           <Routes>
             <Route path="/" element={<Main isLoggedIn={isLoggedIn} userTariff={userTariff} />} /> 
             <Route path="/tariffs" element={<Main isLoggedIn={isLoggedIn} userTariff={userTariff} scrollTo="tariffs" />} />
             <Route path="/faq" element={<Main isLoggedIn={isLoggedIn} userTariff={userTariff} scrollTo="faq" />} />
             <Route path="/auth" element={<Authorization />} />
-            <Route path="/search" element={isLoggedIn ? <Search /> : <Navigate to="/" replace />} />
-            <Route path="/results" element={isLoggedIn ? <SearchResults /> : <Navigate to="/" replace />} />
+            <Route 
+              path="/search" 
+              element={
+                <ProtectedRoute>
+                  <Search />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/results" 
+              element={
+                <ProtectedRoute>
+                  <SearchResults />
+                </ProtectedRoute>
+              } 
+            />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>

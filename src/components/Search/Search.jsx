@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext'; 
+import { useAuth } from '../../context/AuthContext';
+import { searchAPI } from '../../api/search';
 
 import './Search.css';
 import CompanyINN from './CompanyINN/CompanyINN';
@@ -56,72 +57,27 @@ const Search = () => {
     setIsFormValid(isValid);
   }, [companyINN, documentCount, startDate, endDate, isInnValid, isDocumentCountValid, isDateValid]);
 
-  const handleCheckboxChange = (event) => {
-    const { name, checked } = event.target;
-    setCheckboxStates(prevState => ({
-      ...prevState,
-      [name]: checked,
-    }));
-  };
-
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-  
-    let apiTonality;
-    switch (tonality) {
-      case 'Любая':
-        apiTonality = 'any';
-        break;
-      case 'Позитивная':
-        apiTonality = 'positive';
-        break;
-      case 'Негативная':
-        apiTonality = 'negative';
-        break;
-      default:
-        apiTonality = 'any';
-    }
-  
+    
     if (isFormValid) {
+      const searchParams = searchAPI.formatSearchParams({
+        companyINN,
+        tonality,
+        documentCount,
+        startDate,
+        endDate,
+        checkboxStates,
+      });
       
-      const searchParams = {
-        issueDateInterval: {
-          startDate: `${startDate}T00:00:00+03:00`,
-          endDate: `${endDate}T23:59:59+03:00`
-        },
-        searchContext: {
-          targetSearchEntitiesContext: {
-            targetSearchEntities: [{
-              type: "company",
-              inn: companyINN,
-              maxFullness: checkboxStates.maxCompleteness,
-            }],
-            onlyMainRole: checkboxStates.mainRole,
-            tonality: apiTonality,
-            onlyWithRiskFactors: checkboxStates.riskFactorsOnly,
-          }
-        },
-        attributeFilters: {
-          excludeTechNews: !checkboxStates.includeMarketNews,
-          excludeAnnouncements: !checkboxStates.includeAnnouncements,
-          excludeDigests: !checkboxStates.includeNewsSummaries,
-        },
-        limit: Number(documentCount),
-        sortType: "sourceInfluence",
-        sortDirectionType: "desc",
-        intervalType: "month",
-        histogramTypes: ["totalDocuments", "riskFactors"]
-      };
-  
       console.log('Отправка запроса на сервер с данными:', searchParams);
-  
+      
       navigate('/results', { state: { searchParams: searchParams } });
     } else {
       console.log('Форма не валидна, перенаправление не выполнено.');
     }
   };
   
-
   return (
     <div className="search-content">
 
@@ -130,8 +86,8 @@ const Search = () => {
           <h1 className="h1-search-page">Найдите необходимые <br />данные в пару кликов.</h1>
           <p className="p-search-page-title-block">Задайте параметры поиска. <br />Чем больше заполните, тем точнее поиск</p>
         </div>
-        <img className="search-page-small-picture-sheet" src={search_page_small_picture_sheet} alt="Paper image" />
-        <img className="search-page-small-picture-folders" src={search_page_small_picture_folders} alt="Folderds image" />
+        <img className="search-page-small-picture-sheet" src={search_page_small_picture_sheet} alt="Paper" />
+        <img className="search-page-small-picture-folders" src={search_page_small_picture_folders} alt="Folders" />
       </div>
 
       <div className="search-block">
@@ -159,10 +115,21 @@ const Search = () => {
           </div>
 
           <div className="right-part-search-form">
-            <CheckboxBlock checkboxStates={checkboxStates} handleCheckboxChange={handleCheckboxChange} />
-            <div className="right-part-submit-button-block">
-              <button className="button" type="submit" disabled={!isFormValid}>Поиск</button>
-              <p className="star-message">* Обязательные к заполнению поля</p>
+            <CheckboxBlock
+              checkboxStates={checkboxStates}
+              setCheckboxStates={setCheckboxStates}
+            />
+            <div className="search-button-container">
+              <button 
+                type="submit" 
+                className={`search-button ${isFormValid ? 'active' : ''}`}
+                disabled={!isFormValid}
+              >
+                Поиск
+              </button>
+            </div>
+            <div className="search-limit-text">
+              *Максимальное количество документов в выдаче — 1000
             </div>
           </div>
 
