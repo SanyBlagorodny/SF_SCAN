@@ -15,6 +15,7 @@ import Footer from './components/Footer/Footer';
 import Authorization from './components/Authorization/Authorization';
 import Search from './components/Search/Search';
 import SearchResults from './components/SearchResults/SearchResults';
+import FAQ from './components/FAQ/FAQ';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import user_pic_example from './assets/user_pic_example.png';
 
@@ -48,7 +49,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Main isLoggedIn={isLoggedIn} userTariff={userTariff} />} /> 
             <Route path="/tariffs" element={<Main isLoggedIn={isLoggedIn} userTariff={userTariff} scrollTo="tariffs" />} />
-            <Route path="/faq" element={<Main isLoggedIn={isLoggedIn} userTariff={userTariff} scrollTo="faq" />} />
+            <Route path="/faq" element={<FAQ />} />
             <Route path="/auth" element={<Authorization />} />
             <Route 
               path="/search" 

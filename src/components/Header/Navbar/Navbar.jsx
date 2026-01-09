@@ -1,35 +1,42 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const [activePath, setActivePath] = useState('/');
+
+    useEffect(() => {
+        setActivePath(location.pathname);
+    }, [location.pathname]);
 
     const handleNavClick = (path) => {
         console.log('Navbar clicked, navigating to:', path);
         navigate(path);
     };
 
+    const isActive = (path) => {
+        return activePath === path;
+    };
+
     return (
         <nav className="navbar">
             <span 
-                className="navbar-link" 
+                className={`navbar-link ${isActive('/') ? 'active' : ''}`}
                 onClick={() => handleNavClick('/')}
-                style={{ cursor: 'pointer', padding: '5px' }}
             >
                 Главная
             </span>
             <span 
-                className="navbar-link" 
+                className={`navbar-link ${isActive('/tariffs') ? 'active' : ''}`}
                 onClick={() => handleNavClick('/tariffs')}
-                style={{ cursor: 'pointer', padding: '5px' }}
             >
                 Тарифы
             </span>
             <span 
-                className="navbar-link" 
+                className={`navbar-link ${isActive('/faq') ? 'active' : ''}`}
                 onClick={() => handleNavClick('/faq')}
-                style={{ cursor: 'pointer', padding: '5px' }}
             >
                 FAQ
             </span>
