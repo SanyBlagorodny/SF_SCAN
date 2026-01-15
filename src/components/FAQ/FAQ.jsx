@@ -98,17 +98,19 @@ const FAQ = () => {
 
   return (
     <div className="faq-container">
-      <div className="faq-content">
-        <div className="faq-header">
+      <div className="faq-header-block">
+        <div className="faq-header-content">
           <h1 className="faq-title">Часто задаваемые вопросы</h1>
           <p className="faq-subtitle">
             Ответы на популярные вопросы о сервисе СКАН
           </p>
         </div>
+      </div>
 
-        <div className="faq-categories">
-          {faqData.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="faq-category">
+      <div className="faq-categories">
+        {faqData.map((category, categoryIndex) => (
+          <div key={categoryIndex} className="faq-category-block">
+            <div className="faq-category-content">
               <h2 className="category-title">{category.category}</h2>
               <div className="faq-items">
                 {category.questions.map((item, questionIndex) => {
@@ -134,10 +136,12 @@ const FAQ = () => {
                 })}
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
+      </div>
 
-        <div className="faq-contact">
+      <div className="faq-contact-block">
+        <div className="faq-contact-content">
           <div className="contact-card">
             <h3>Остались вопросы?</h3>
             <p>Если вы не нашли ответ на свой вопрос, свяжитесь с нашей службой поддержки</p>

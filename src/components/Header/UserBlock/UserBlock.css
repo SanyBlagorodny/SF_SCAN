@@ -1,8 +1,27 @@
 .user-blocks {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     align-items: center;
-    min-width: 388px;
+    min-width: auto;
+    gap: 20px;
+}
+
+@media (min-width: 769px) {
+    .user-blocks {
+        gap: 128px;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 769px) {
+    .user-blocks {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 900px) and (min-width: 769px) {
+    .user-blocks {
+        gap: 15px;
+    }
 }
 
 @keyframes spin {
@@ -22,6 +41,7 @@
     justify-content: space-between;
     align-items: center;
     flex: 0 0 251px;
+    gap: 20px;
 }
 
 .login {
@@ -55,15 +75,18 @@
     background-color: var(--scan-green);
     border: none;
     opacity: 0.6;
-    margin-right: 20px;
-    margin-left: 20px;
     z-index: 1;
 }
 
-@media (max-width: 1360px) {
+@media (max-width: 768px) {
 
     .user-blocks {
         min-width: auto;
+    }
+
+    .dropdown-menu-page .user-blocks {
+        width: 100%;
+        justify-content: center;
     }
     
     .vertical-divider {
@@ -71,14 +94,13 @@
     }
 
     .reg-block {
-        margin-top: 80px;
         display: flex;
         flex-direction: column;
+        gap: 20px;
     }
 
     .login-button {
         width: 300px;
-        margin-top: 20px;
         font-size: 20px;
     }
 

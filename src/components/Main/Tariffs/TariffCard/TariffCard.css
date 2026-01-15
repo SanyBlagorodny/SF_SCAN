@@ -1,18 +1,18 @@
 .tariff-card {
-    width: 415px;
-    height: 540px;
-    max-height: 540px;
-    border: 0;
+    width: 100%;
+    max-width: 415px;
+    min-height: 620px;
+    border: 1px solid #e0e0e0;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px #00000033;
-    margin: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-shrink: 0;
+    overflow: visible;
 }
 
 .tariff-colored-block {
-    max-height: 132px;
     width: 100%;
     padding: 15px;
     border-radius: 10px 10px 0 0;
@@ -54,13 +54,13 @@
     margin: 0;
     color: var(--scan-black);
     font-family: 'InterMedium', sans-serif; 
-    font-size: 30px; 
+    font-size: 24px; 
 }
 
 .tariff-name-block p {
     color: var(--scan-black);
-    font-size: 16px;
-    white-space: nowrap;
+    font-size: 14px;
+    word-wrap: break-word;
     max-width: 90%;
 }
 
@@ -92,7 +92,7 @@
     justify-content: end;
     align-items: center;
     padding-right: 12px;
-    margin-bottom: -10px;
+    margin-bottom: 5px;
 }
 
 .your-tariff-badge {
@@ -121,13 +121,13 @@
 .tariff-prices h3 {
     color: var(--scan-black);
     font-family: 'InterMedium', sans-serif;
-    font-size: 30px;
+    font-size: 24px;
 }
 
 .last-price-tag {
     text-decoration: line-through;
     font-family: 'InterMedium', sans-serif;
-    font-size: 25px;
+    font-size: 20px;
     color: #D2D2D2;
 }
 
@@ -138,29 +138,30 @@
 
 .card-text {
     color: var(--scan-black);
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .card-text-20px {
-    font-size: 20px;
+    font-size: 18px;
     font-family: 'InterMedium', sans-serif;
     margin-left: -10px;
 }
 
 .installment-text {
     margin-top: -30px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 
 .tariff-to-include-lines {
     display: flex;
     font-family: 'InterRegular', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     align-items: center;
     margin-bottom: -30px;
     margin-top: -20px;
     margin-left: -12px;
+    gap: 10px;
 }
 
 .green-checkbox {
@@ -199,17 +200,45 @@
     color: var(--scan-black);
 }
 
-@media (max-width: 1360px) {
+@media (max-width: 1200px) and (min-width: 769px) {
     .tariff-card {
-        width: 335px;
-        min-width: 335px;
-        height: 512px;
-        max-height: 512px;
+        width: 100%;
+        max-width: 380px;
+        min-height: 620px;
+        border: 1px solid #e0e0e0;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+        margin: 0;
+        overflow: visible;
+    }
+}
+
+.tariff-colored-block {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    .tariff-card {
+        width: 100%;
+        max-width: 340px;
+        min-width: 0;
+        min-height: 620px;
+        border: 1px solid #e0e0e0;
+        scroll-snap-align: start;
+        flex-shrink: 0;
+        margin: 0;
+        overflow: visible;
+        padding-bottom: 10px;
+        box-sizing: border-box;
     }
 
     .tariff-colored-block {
         min-height: 135px;
-        max-height: 135px;
         padding: 15px;
     }
 
@@ -219,12 +248,12 @@
 
 
     .tariff-name-block h3 {
-        font-size: 20px; 
-        margin-bottom: -10px;
+        font-size: 18px; 
+        margin-bottom: -5px;
     }
 
     .tariff-name-block p {
-        font-size: 16px;
+        font-size: 12px;
     }
 
     .tarif-icon-block{
@@ -245,40 +274,45 @@
     }
 
     .card-text {
-        font-size: 16px;
+        font-size: 14px;
     }
     
     .card-text-20px {
-        font-size: 18px;
+        font-size: 16px;
         margin-left: 20px;
     }
     
     .installment-text {
         width: 90%;
+        font-size: 14px;
+    }
+
+    .tariff-prices h3 {
+        font-size: 18px;
+    }
+
+    .last-price-tag {
         font-size: 16px;
     }
 
-    
     .tariff-to-include-lines {
-        display: flex;
-        font-family: 'InterRegular', sans-serif;
-        font-size: 18px;
-        align-items: center;
-        margin-bottom: -30px;
-        margin-top: -20px;
+        font-size: 14px;
+        margin-bottom: -20px;
+        margin-top: -15px;
         margin-left: 20px;
+        gap: 8px;
     }
 
-    
     .tariff-button-div {
         margin-top: 50px;
         margin-bottom: 20px;
     }
     
     .button-tariffs {
-        width: 286.57px;
+        width: 100%;
+        max-width: 286.57px;
         height: 59px;
-        font-size: 18px;
+        font-size: 16px;
     }
    
 }

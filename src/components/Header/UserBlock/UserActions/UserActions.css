@@ -4,12 +4,27 @@
     height: 63px;
     width: 100%;
     min-width: 175px;
-    margin-right: 130px;
     border-radius: 5px;
     background-color: #F3F3F3;
     border: none;
     align-items: center;
     justify-content: center;
+}
+
+@media (max-width: 900px) {
+    .user-actions-rectangle {
+        flex: 0 0 150px;
+        min-width: 150px;
+    }
+
+    .used-companies-number,
+    .limit-companies-number {
+        font-size: 12px;
+    }
+
+    .user-actions-data {
+        grid-column-gap: 3px;
+    }
 }
 
 .user-actions-data {
@@ -29,8 +44,8 @@
 }
 
 .action-item {
-    text-align: right;
-    justify-content: flex-end;
+    text-align: left;
+    justify-content: flex-start;
 }
 
 .used-companies-number {
@@ -47,10 +62,8 @@
     margin-left: 2px;
 }
 
-@media (max-width: 1360px) {
+@media (max-width: 768px) {
     .user-actions-rectangle {
-        margin-right: 0;
-        margin-left: 30px;
         flex: 0 0 132px;
         height: 75px;
         width: 100%;
@@ -60,7 +73,7 @@
     .user-actions-data {
         display: flex;
         flex-direction: column;
-        row-gap: 3px;;
+        row-gap: 3px;
     }
 
     .action-item, .number-item {

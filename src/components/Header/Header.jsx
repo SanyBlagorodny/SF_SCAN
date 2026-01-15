@@ -19,7 +19,7 @@ const Header = ({ isLoggedIn, userName, userPicture, setUserName, setUserPicture
     const { setIsLoggedIn } = useAuth();
     const [isMenuVisible, setIsMenuVisible] = useState(false);
     const { width } = useWindowSize();
-    const isMobile = width <= 1360;
+    const isMobile = width <= 768;
 
     const toggleMenuVisibility = () => {
         setIsMenuVisible(!isMenuVisible);
@@ -49,12 +49,12 @@ const Header = ({ isLoggedIn, userName, userPicture, setUserName, setUserPicture
         }, 1000 * 60);
       
         return () => clearInterval(interval);
-      }, []);
+      }, [setIsLoggedIn]);
 
     return (
         <header className={isMenuVisible && isMobile ? 'menu-visible' : ''}>
             <div className="header-content">
-                <img className="scan-logo" src={isMenuVisible && isMobile ? scan_logo_white : scan_logo_green} alt="Scan logo" />
+                <img className="scan-logo" src={isMenuVisible && isMobile ? scan_logo_white : scan_logo_green} alt="Scan logo" onClick={() => navigate('/')} />
 
                 {!isMobile && <Navbar />}
 
@@ -71,15 +71,17 @@ const Header = ({ isLoggedIn, userName, userPicture, setUserName, setUserPicture
                 )}
 
                 {isMobile && !isMenuVisible && (
-                    <UserBlock 
-                        isLoggedIn={isLoggedIn} 
-                        userName={userName} 
-                        userPicture={userPicture} 
-                        setUserName={setUserName}
-                        setUserPicture={setUserPicture}
-                        isMenuVisible={isMenuVisible}
-                        isMobile={isMobile}
-                    />
+                    <div className="header-center">
+                        <UserBlock 
+                            isLoggedIn={isLoggedIn} 
+                            userName={userName} 
+                            userPicture={userPicture} 
+                            setUserName={setUserName}
+                            setUserPicture={setUserPicture}
+                            isMenuVisible={isMenuVisible}
+                            isMobile={isMobile}
+                        />
+                    </div>
                 )}
 
                 {isMobile && (
@@ -101,7 +103,7 @@ const Header = ({ isLoggedIn, userName, userPicture, setUserName, setUserPicture
             
             {isMenuVisible && isMobile && (
                 <div className="dropdown-menu-page">
-                    <Navbar />
+                    <Navbar onNavigate={() => setIsMenuVisible(false)} />
                     {isLoggedIn ? (
                         <UserBlock 
                             isLoggedIn={isLoggedIn} 

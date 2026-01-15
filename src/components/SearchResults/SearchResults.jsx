@@ -105,14 +105,15 @@ const SearchResults = () => {
 
   return (
     <div className="search-results-content">
-      <div className="search-results-header">
-        <h1 className="h1-search-results-page">Ищем. Скоро будут результаты</h1>
-        <p className="p-search-results-page">
-          поиск может занять некоторое время, просим сохранять терпение
-        </p>
+      <div className="search-results-header-section">
+        <div className="search-results-header">
+          <h1 className="h1-search-results-page">Ищем. Скоро будут результаты</h1>
+          <p className="p-search-results-page">
+            Поиск может занять некоторое время, просим сохранять терпение
+          </p>
+        </div>
+        <img className="search-results-large-picture" src={search_results_large_picture} alt="Search results illustration" />
       </div>
-
-      <img className="search-results-large-picture" src={search_results_large_picture} alt="Search results illustration" />
 
       <div className="search-results-main">
         {isError && (

@@ -7,9 +7,11 @@ import './Authorization.css';
 import authorization_icon_facebook from "../../assets/authorization_icon_facebook.svg";
 import authorization_icon_google from "../../assets/authorization_icon_google.svg";
 import authorization_icon_yandex from "../../assets/authorization_icon_yandex.svg";
+import authorization_icon_lock from "../../assets/authorization_icon_lock.svg";
 import authorization_large_picture from "../../assets/authorization_large_picture.svg";
 
 const Authorization = () => {
+  const [activeTab, setActiveTab] = useState('login');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [usernameError, setUsernameError] = useState(false);
@@ -85,77 +87,96 @@ const Authorization = () => {
       </div>
 
       <div className="auth-form-container">
+        <img className="auth-icon-lock" src={authorization_icon_lock} alt="" />
         <div className="auth-form">
           <div className="auth-tabs">
-            <div className="auth-tab active">Войти</div>
-            <div className="auth-tab">Зарегистрироваться</div>
+            <div
+              className={`auth-tab auth-tab-login ${activeTab === 'login' ? 'active' : ''}`}
+              onClick={() => setActiveTab('login')}
+            >
+              Войти
+            </div>
+            <div
+              className={`auth-tab auth-tab-register ${activeTab === 'register' ? 'active' : ''}`}
+              onClick={() => setActiveTab('register')}
+            >
+              Зарегистрироваться
+            </div>
           </div>
 
-          <form onSubmit={handleLogin}>
-            <div className="input">
-              <label htmlFor="username">Логин или номер телефона:</label>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                value={username}
-                onChange={handleUsernameChange}
-                autoComplete="username"
-                required
-                style={{ borderColor: usernameError ? 'red' : '' }}
-              />
-              {usernameError && <div className="auth-form-error">Введите логин</div>}
-            </div>
+          {activeTab === 'login' ? (
+            <>
+              <form onSubmit={handleLogin}>
+                <div className="input">
+                  <label htmlFor="username">Логин или номер телефона:</label>
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    value={username}
+                    onChange={handleUsernameChange}
+                    autoComplete="username"
+                    required
+                    style={{ borderColor: usernameError ? 'red' : '' }}
+                  />
+                  {usernameError && <div className="auth-form-error">Введите логин</div>}
+                </div>
 
-            <div className="input">
-              <label htmlFor="password">Пароль:</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                onChange={handlePasswordChange}
-                autoComplete="current-password"
-                required
-                style={{ borderColor: passwordError ? 'red' : '' }}
-              />
-              {passwordError && <div className="auth-form-error">Введите пароль</div>}
-            </div>
+                <div className="input">
+                  <label htmlFor="password">Пароль:</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={password}
+                    onChange={handlePasswordChange}
+                    autoComplete="current-password"
+                    required
+                    style={{ borderColor: passwordError ? 'red' : '' }}
+                  />
+                  {passwordError && <div className="auth-form-error">Введите пароль</div>}
+                </div>
 
-            {serverError && (
-              <div className="auth-form-error server-error">
-                {serverError}
+                {serverError && (
+                  <div className="auth-form-error server-error">
+                    {serverError}
+                  </div>
+                )}
+
+                <div className="auth-button-div">
+                  <button className="button auth-button" type="submit" disabled={!isFormValid}>
+                    {isLoading ? 'Вход...' : 'Войти'}
+                  </button>
+                </div>
+
+                <button
+                  type="button"
+                  className="reset-password"
+                  onClick={(e) => e.preventDefault()}
+                >
+                  Восстановить пароль
+                </button>
+              </form>
+
+              <div className="auth-divider">
+                <span>Войти через:</span>
               </div>
-            )}
 
-            <div className="auth-button-div">
-              <button 
-                className="button auth-button" 
-                type="submit" 
-                disabled={!isFormValid}
-              >
-                {isLoading ? 'Вход...' : 'Войти'}
-              </button>
-            </div>
-
-            <button type="button" className="reset-password" onClick={(e) => e.preventDefault()}>Восстановить пароль</button>
-          </form>
-
-          <div className="auth-divider">
-            <span>Или войдите через</span>
-          </div>
-
-          <div className="social-login">
-            <button className="social-button google">
-              <img src={authorization_icon_google} alt="Google" />
-            </button>
-            <button className="social-button facebook">
-              <img src={authorization_icon_facebook} alt="Facebook" />
-            </button>
-            <button className="social-button yandex">
-              <img src={authorization_icon_yandex} alt="Yandex" />
-            </button>
-          </div>
+              <div className="social-login">
+                <button className="social-button google">
+                  <img src={authorization_icon_google} alt="Google" />
+                </button>
+                <button className="social-button facebook">
+                  <img src={authorization_icon_facebook} alt="Facebook" />
+                </button>
+                <button className="social-button yandex">
+                  <img src={authorization_icon_yandex} alt="Yandex" />
+                </button>
+              </div>
+            </>
+          ) : (
+            <div className="auth-register-placeholder">Зарегистрироваться пока нельзя</div>
+          )}
         </div>
       </div>
       <img className="auth-large-image-mobile" src={authorization_large_picture} alt="People with key" />

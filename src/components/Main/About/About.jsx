@@ -18,7 +18,7 @@ const About = ({ isLoggedIn }) => {
   return (
     <div className="about-block">
       <div className="about-info-block">
-        <h1 className="about-h1-box">Сервис по поиску<br />публикаций <br />о компании<br />по его ИНН</h1>
+        <h1 className="about-h1-box">Сервис по поиску публикаций о компании по его ИНН</h1>
         <p className="about-p-box">Комплексный анализ публикаций, получение данных в формате PDF на электронную почту.</p>
         {isLoggedIn && <button 
           className="button" 

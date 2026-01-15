@@ -4,16 +4,19 @@ main {
 }
 
 .main-content {
-    padding-top: 93px;
+    padding-top: 100px;
     max-width: 1440px;
     flex-grow: 1;
 }
 
-@media (max-width: 1360px) {
-
+@media (max-width: 1200px) {
     .main-content {
-        padding-top: 90px;
-        max-width: 375px;
+        padding-top: 100px;
     }
+}
 
+@media (max-width: 768px) {
+    .main-content {
+        padding-top: 100px;
+    }
 }

@@ -24,13 +24,13 @@ const Search = () => {
   const [isDocumentCountValid, setIsDocumentCountValid] = useState(false);
   const [isDateValid, setIsDateValid] = useState(false);
   const [checkboxStates, setCheckboxStates] = useState({
-    maxCompleteness: false,
-    businessMentions: false,
-    mainRole: false,
+    maxCompleteness: true,
+    businessMentions: true,
+    mainRole: true,
     riskFactorsOnly: false,
-    includeMarketNews: true, 
+    includeMarketNews: false, 
     includeAnnouncements: true,
-    includeNewsSummaries: true,
+    includeNewsSummaries: false,
   });
 
   const { isLoggedIn } = useAuth();
@@ -57,25 +57,31 @@ const Search = () => {
     setIsFormValid(isValid);
   }, [companyINN, documentCount, startDate, endDate, isInnValid, isDocumentCountValid, isDateValid]);
 
+  const handleCheckboxChange = (event) => {
+    const { name, checked } = event.target;
+    setCheckboxStates((prev) => ({
+      ...prev,
+      [name]: checked,
+    }));
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    
-    if (isFormValid) {
-      const searchParams = searchAPI.formatSearchParams({
-        companyINN,
-        tonality,
-        documentCount,
-        startDate,
-        endDate,
-        checkboxStates,
-      });
-      
-      console.log('Отправка запроса на сервер с данными:', searchParams);
-      
-      navigate('/results', { state: { searchParams: searchParams } });
-    } else {
-      console.log('Форма не валидна, перенаправление не выполнено.');
+
+    if (!isFormValid) {
+      return;
     }
+
+    const searchParams = searchAPI.formatSearchParams({
+      companyINN,
+      tonality,
+      documentCount,
+      startDate,
+      endDate,
+      checkboxStates,
+    });
+
+    navigate('/results', { state: { searchParams: searchParams } });
   };
   
   return (
@@ -83,8 +89,8 @@ const Search = () => {
 
       <div className="search-title-block">
         <div className="search-title-text">
-          <h1 className="h1-search-page">Найдите необходимые <br />данные в пару кликов.</h1>
-          <p className="p-search-page-title-block">Задайте параметры поиска. <br />Чем больше заполните, тем точнее поиск</p>
+          <h1 className="h1-search-page">Найдите необходимые данные в пару кликов.</h1>
+          <p className="p-search-page-title-block">Задайте параметры поиска. Чем больше заполните, тем точнее поиск</p>
         </div>
         <img className="search-page-small-picture-sheet" src={search_page_small_picture_sheet} alt="Paper" />
         <img className="search-page-small-picture-folders" src={search_page_small_picture_folders} alt="Folders" />
@@ -117,7 +123,7 @@ const Search = () => {
           <div className="right-part-search-form">
             <CheckboxBlock
               checkboxStates={checkboxStates}
-              setCheckboxStates={setCheckboxStates}
+              handleCheckboxChange={handleCheckboxChange}
             />
             <div className="search-button-container">
               <button 
@@ -127,15 +133,15 @@ const Search = () => {
               >
                 Поиск
               </button>
-            </div>
-            <div className="search-limit-text">
-              *Максимальное количество документов в выдаче — 1000
+              <div className="search-required-note">
+                * Обязательные к заполнению поля
+              </div>
             </div>
           </div>
 
         </form>
 
-        <img className="search-page-large-picture" src={search_page_large_picture} alt="Search image" />
+        <img className="search-page-large-picture" src={search_page_large_picture} alt="Search" />
       </div>  
     </div>
   );

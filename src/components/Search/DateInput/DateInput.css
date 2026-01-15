@@ -14,7 +14,10 @@
     color: #FF5959;
     font-size: 14px;
     text-align: center;
-    width: 395px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
     visibility: hidden;
   }
 
@@ -31,6 +34,19 @@
   display: flex;
   gap: 10px;
   width: 100%;
+}
+
+@media (min-width: 769px) {
+  .date-input-container {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .date-input-container input {
+    width: 176px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
 }
 
 .react-datepicker-wrapper,
@@ -52,12 +68,14 @@
 }
 
 
-  @media (max-width: 1360px) {
+  @media (max-width: 768px) {
     .date-input-container {
       flex-direction: column;
     }
 
     .date-error-message {
-      width: 335px;
+      width: 100%;
+      max-width: 100%;
+      overflow-wrap: anywhere;
     }
   }

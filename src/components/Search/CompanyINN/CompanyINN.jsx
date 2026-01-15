@@ -14,7 +14,7 @@ const CompanyINN = ({ companyINN, setCompanyINN, setIsInnValid }) => {
     }
     if (!inn.length) {
       errorObj.code = 1;
-      errorObj.message = 'Обязательное поле';
+      errorObj.message = '';
     } else if (/[^0-9]/.test(inn)) {
       errorObj.code = 2;
       errorObj.message = 'Введите корректные данные';
@@ -63,7 +63,7 @@ const CompanyINN = ({ companyINN, setCompanyINN, setIsInnValid }) => {
 
   return (
     <div className="form-field form-field-inputs">
-      <label htmlFor="companyINN">ИНН компании <span className={error ? "required-asterisk error" : "required-asterisk"}>*</span></label>
+      <label htmlFor="companyINN">ИНН компании<span className={error ? "required-asterisk error" : "required-asterisk"}>*</span></label>
       <input
         type="text"
         id="companyINN"

@@ -2,10 +2,6 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-image: url('./../../../assets/fallout-arrow.svg');
-    background-repeat: no-repeat;
-    background-position: right 8px center;
-    background-size: 20px;
     cursor: pointer;
   }
   
@@ -13,6 +9,8 @@
     position: relative;
     display: inline-block;
     width: 242px;
+    max-width: 100%;
+    box-sizing: border-box;
     cursor: pointer;
   }
   
@@ -30,8 +28,10 @@
     background-repeat: no-repeat;
   }
 
-  @media (max-width: 1360px) {
+  @media (max-width: 768px) {
     .select-wrapper {
-      width: 335px;
+      display: block;
+      width: 100%;
+      max-width: 100%;
     }
   }

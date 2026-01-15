@@ -1,73 +1,77 @@
 .general-summary-block {
     margin-bottom: 60px;
+    padding: 0 60px;
+    box-sizing: border-box;
 }
 
 .table-and-arrows-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 1346px;
-    margin: 0 auto;
-  }
+    width: 100%;
+    max-width: 1346px;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-  .table-wrapper-main {
+.table-wrapper-main {
     display: flex;
     align-items: center;
+    width: 100%;
     max-width: 1260px;
-    min-width: 1260px;
+    min-width: 0;
     border: 2px solid var(--scan-green);
     border-radius: 10px;
     min-height: 158px;
     max-height: 158px;
-  }
-  
-  .table-wrapper {
+}
+
+.table-wrapper {
     overflow-x: auto;
     border-radius: 10px;
     scrollbar-width: none; /* Для Firefox */
     -ms-overflow-style: none; /* Для Internet Explorer и Edge */
-  }
+}
 
-  .table-wrapper::-webkit-scrollbar {
+.table-wrapper::-webkit-scrollbar {
     display: none; /* Для WebKit-браузеров, таких как Chrome и Safari */
-  }
-  
-  .table-headers {
+}
+
+.table-headers {
     display: flex;
     flex-direction: column;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     background-color: var(--scan-green);
     color: white;
-  }
+}
 
-  .table-data {
+.table-data {
     display: flex;
     justify-content: start;
     align-items: center; 
-  }
-  
-  .table-headers > div, .data-row > div {
+}
+
+.table-headers > div, .data-row > div {
     min-width: 133px;
     padding: 17.5px;
     text-align: center;
-  }
+}
 
-
-  .data-cell, .header-total, .header-period, .header-risks {
+.data-cell, .header-total, .header-period, .header-risks {
     flex: 1;
     padding: 17.5px;
 }
-   
-  .divider {
+
+.divider {
     height: 124px;
     width: 2px;
     background-color: #949494;
     opacity: 0.4;
     margin: auto 0;
-  }
+}
 
-  .scroll-btn {
+.scroll-btn {
     width: 39px;
     height: 39px;
     background-color: transparent;
@@ -77,14 +81,13 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-  }
-  
-  
-  .scroll-btn.left {
-    transform: scaleX(-1);
-  }
+}
 
-  @keyframes spin {
+.scroll-btn.left {
+    transform: scaleX(-1);
+}
+
+@keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
@@ -94,7 +97,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center; 
-    margin-left: 430px;
+    width: 100%;
 }
 
 .loading-icon-general-summary {
@@ -110,37 +113,59 @@
     margin-top: 3px;
 }
 
-.error-500-message {
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-  font-size: 18px;
-  text-align: center;
-  margin-left: 200px;
-}
-
-@media (max-width: 1360px) {
+@media (max-width: 768px) {
   .general-summary-block {
-    margin-top: 0px;
-}
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 14px;
+  }
+
+  .general-summary-block .h2-search-results-page,
+  .general-summary-block .p-general-summary-title-block {
+      width: 100%;
+      text-align: center;
+  }
+
+  .error-500-message {
+      margin: 0;
+  }
 
   .table-and-arrows-container {
-      width: 350px;
-      margin: 0;
+      position: relative;
+      max-width: 100%;
+      padding: 0;
+      justify-content: center;
+  }
+
+  .scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+  }
+
+  .scroll-btn.left {
+      left: 0;
+      transform: translateY(-50%) scaleX(-1);
+  }
+
+  .scroll-btn.right {
+      right: 0;
   }
 
   .table-wrapper-main {
       display: block;
       max-width: 298px;
-      width: 298px;
-      min-width: 298px;
+      width: 100%;
+      min-width: 0;
       max-height: 140px;
       height: 140px;
       min-height: 140px;
   }
 
   .table-wrapper {
-    width: 298px;
+    width: 100%;
   }
   
   .table-headers, .table-data {
@@ -154,7 +179,7 @@
       background-color: var(--scan-green);
       color: white;
       height: 75px;
-      width: 298px;
+      width: 100%;
       margin-left: -2px;
       border-top-right-radius: 10px;
       border-bottom-left-radius: 0;
@@ -175,9 +200,9 @@
   .data-row {
       display: flex;
       flex-direction: row;
-      max-width: 298px;
-      min-width: 298px;
-      width: 298px;
+      max-width: 100%;
+      min-width: 0;
+      width: 100%;
   }
   
   
@@ -209,6 +234,4 @@
   margin-left: 10px;
   margin-right: 10px;
 }
-
-
 }

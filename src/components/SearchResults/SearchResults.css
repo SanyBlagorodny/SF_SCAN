@@ -1,22 +1,54 @@
 .search-results-content {
     width: 100%;
     background-color: var(--scan-white);
-    padding-top: 123px;
+    padding: 123px 60px 0;
     max-width: 1440px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0 auto;
     margin-bottom: 60px;
+    box-sizing: border-box;
+}
+
+.search-results-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 60px;
+    box-sizing: border-box;
+}
+
+.search-results-header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 40px;
 }
 
 .h1-search-results-page {
+    font-family: 'Ferry', sans-serif;
+    font-weight: 900;
+    font-style: normal;
     font-size: 40px;
+    line-height: 100%;
+    letter-spacing: 4%;
 }
 
-.p-search-results-page-title-block {
+.p-search-results-page {
+    font-family: Inter;
+    font-weight: 400;
+    font-style: Regular;
     font-size: 20px;
-    padding-top: 30px;
+    line-height: 100%;
+    letter-spacing: 1%;
+    color: black;
 }
 
 .search-results-title-block {
@@ -24,73 +56,120 @@
     justify-content: space-between;
     align-items: start;
     margin-top: 20px;
-    margin-right: 60px;
-    margin-left: 60px;
+    width: 100%;
 }
 
 .search-results-large-picture {
     height: 369px;
-    margin-bottom: -40px;
+    max-width: 500px;
+    flex-shrink: 0;
 }
 
 .h2-search-results-page {
     font-family: Ferry;
-    font-size: 36px;
+    font-size: 28px;
 }
 
 .general-summary-block {
-    margin-right: 60px;
-    margin-left: 60px;
+    width: 100%;
 }
 
 .p-general-summary-title-block {
     font-family: InterRegular, sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     color: #949494;
 }
 
-@media (max-width: 1360px) {
+@media (max-width: 1200px) {
     .search-results-content {
-        max-width: 375px;
-        margin-bottom: 40px;
+        padding: 110px 40px 0;
+        align-items: flex-start;
     }
-    
+
+    .search-results-header-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .search-results-header {
+        max-width: 100%;
+        margin-bottom: 0;
+        padding: 0;
+    }
+
     .h1-search-results-page {
-        font-size: 28px;
+        font-family: 'Ferry', sans-serif;
+        font-weight: 900;
+        font-style: normal;
+        font-size: 32px;
+        line-height: 100%;
+        letter-spacing: 4%;
     }
-    
-    .p-search-results-page-title-block {
+
+    .p-search-results-page {
+        font-family: Inter;
+        font-weight: 400;
+        font-style: Regular;
         font-size: 18px;
-        padding-top: 5px;
+        line-height: 100%;
+        letter-spacing: 1%;
+        color:black;
+    }
+
+    .search-results-large-picture {
+        height: 300px;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-results-content {
+        padding: 100px 14px 0;
+        margin-bottom: 40px;
+        align-items: flex-start;
+    }
+
+    .search-results-header-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .search-results-header {
+        margin-bottom: 0;
+        padding: 0;
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .h1-search-results-page {
+        font-family: 'Ferry', sans-serif;
+        font-weight: 900;
+        font-style: normal;
+        font-size: 28px;
+        line-height: 100%;
+        letter-spacing: 4%;
     }
     
-    .search-results-title-block {
+    .p-search-results-page {
+        font-family: Inter;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 16px;
+        line-height: 100%;
+        letter-spacing: 1%;
+        color: black;
+    }
+
+    .search-results-large-picture {
+        height: 250px;
+        max-width: 300px;
+    }
+
+    .search-results-main {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         align-items: center;
-        margin-top: 0px;
-        margin-right: 14px;
-        margin-left: 14px;
     }
-    
-    .search-results-large-picture {
-        height: 233.73px;
-        margin-bottom: 20px;
-        margin-top: 5px;
-    }
-    
-    .h2-search-results-page {
-        font-size: 28px;
-    }
-    
-    .general-summary-block {
-        margin-right: 14px;
-        margin-left: 14px;
-    }
-    
-    .p-general-summary-title-block {
-        font-size: 18px;
-    }
-    
 }

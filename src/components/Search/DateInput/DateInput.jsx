@@ -31,7 +31,7 @@ const DateInput = ({ startDate, setStartDate, endDate, setEndDate, setIsDateVali
 
   return (
     <div className="form-field">
-      <label htmlFor="startDate">Диапазон поиска <span className={error ? "required-asterisk error" : "required-asterisk"}>*</span></label>
+      <label htmlFor="startDate">Диапазон поиска<span className={error ? "required-asterisk error" : "required-asterisk"}>*</span></label>
       <div className='form-field-date-inputs'>
         <div className="date-input-container">
           <input

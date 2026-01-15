@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ onNavigate }) => {
     const navigate = useNavigate();
     const location = useLocation();
     const [activePath, setActivePath] = useState('/');
@@ -14,6 +14,9 @@ const Navbar = () => {
     const handleNavClick = (path) => {
         console.log('Navbar clicked, navigating to:', path);
         navigate(path);
+        if (typeof onNavigate === 'function') {
+            onNavigate();
+        }
     };
 
     const isActive = (path) => {

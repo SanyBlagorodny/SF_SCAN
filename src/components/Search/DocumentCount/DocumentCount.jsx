@@ -25,7 +25,7 @@ const DocumentCount = ({ documentCount, setDocumentCount, setIsDocumentCountVali
 
   return (
     <div className="form-field form-field-inputs">
-      <label htmlFor="documentCount">Количество документов в выдаче <span className={error ? "required-asterisk error" : "required-asterisk"}>*</span></label>
+      <label htmlFor="documentCount">Количество документов в выдаче<span className={error ? "required-asterisk error" : "required-asterisk"}>*</span></label>
       <input
         type="number"
         id="documentCount"

@@ -5,13 +5,18 @@ import authorization_icon_lock from "./authorization_icon_lock.svg";
 import authorization_icon_yandex from "./authorization_icon_yandex.svg";
 import authorization_large_picture from "./authorization_large_picture.svg";
 import dropdown_menu_icon_mobile from "./dropdown_menu_icon_mobile.svg";
+import mock_article_1_picture from "./mock_article_1_picture.png";
+import mock_article_2_picture from "./mock_article_2_picture.png";
+import mock_article_3_picture from "./mock_article_3_picture.jpg";
+import mock_article_4_picture from "./mock_article_4_picture.jpg";
+import mock_article_5_picture from "./mock_article_5_picture.jpg";
+import mock_article_6_picture from "./mock_article_6_picture.jpg";
 import scan_logo_green from "./scan_logo_green.svg";
 import scan_logo_white from "./scan_logo_white.svg";
+import search_page_small_picture_folders from "./search_page_small_picture_folders.svg";
+import search_page_small_picture_sheet from "./search_page_small_picture_sheet.svg";
 import search_results_large_picture from "./search_results_large_picture.svg";
-import search_results_small_picture_folders from "./search_results_small_picture_folders.svg";
-import search_results_small_picture_sheet from "./search_results_small_picture_sheet.svg";
 import search_results_wait_results_icon_small from "./search_results_wait_results_icon_small.svg";
-import search_results_wait_results_large_picture from "./search_results_wait_results_large_picture.svg";
 import tariffs_icon_lamp from "./tariffs_icon_lamp.svg";
 import tariffs_icon_laptop from "./tariffs_icon_laptop.svg";
 import tariffs_icon_target from "./tariffs_icon_target.svg";
@@ -28,13 +33,18 @@ export {
     authorization_icon_yandex,
     authorization_large_picture,
     dropdown_menu_icon_mobile,
+    mock_article_1_picture,
+    mock_article_2_picture,
+    mock_article_3_picture,
+    mock_article_4_picture,
+    mock_article_5_picture,
+    mock_article_6_picture,
     scan_logo_green,
     scan_logo_white,
+    search_page_small_picture_folders,
+    search_page_small_picture_sheet,
     search_results_large_picture,
-    search_results_small_picture_folders,
-    search_results_small_picture_sheet,
     search_results_wait_results_icon_small,
-    search_results_wait_results_large_picture,
     tariffs_icon_lamp,
     tariffs_icon_laptop,
     tariffs_icon_target,
