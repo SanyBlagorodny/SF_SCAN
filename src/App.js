@@ -37,39 +37,41 @@ function App() {
 
   return (
     <Router>
-      <div className="app-container">
-        <Header 
-          isLoggedIn={isLoggedIn} 
-          userName={userName} 
-          setUserName={setUserName} 
-          userPicture={userPicture} 
-          setUserPicture={setUserPicture} 
-        />
-        <main>
-          <Routes>
-            <Route path="/" element={<Main isLoggedIn={isLoggedIn} userTariff={userTariff} />} /> 
-            <Route path="/tariffs" element={<Main isLoggedIn={isLoggedIn} userTariff={userTariff} scrollTo="tariffs" />} />
-            <Route path="/faq" element={<FAQ />} />
-            <Route path="/auth" element={<Authorization />} />
-            <Route 
-              path="/search" 
-              element={
-                <ProtectedRoute>
-                  <Search />
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/results" 
-              element={
-                <ProtectedRoute>
-                  <SearchResults />
-                </ProtectedRoute>
-              } 
-            />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </main>
+      <div className="app-shell">
+        <div className="app-container">
+          <Header 
+            isLoggedIn={isLoggedIn} 
+            userName={userName} 
+            setUserName={setUserName} 
+            userPicture={userPicture} 
+            setUserPicture={setUserPicture} 
+          />
+          <main>
+            <Routes>
+              <Route path="/" element={<Main isLoggedIn={isLoggedIn} userTariff={userTariff} />} /> 
+              <Route path="/tariffs" element={<Main isLoggedIn={isLoggedIn} userTariff={userTariff} scrollTo="tariffs" />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/auth" element={<Authorization />} />
+              <Route 
+                path="/search" 
+                element={
+                  <ProtectedRoute>
+                    <Search />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/results" 
+                element={
+                  <ProtectedRoute>
+                    <SearchResults />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </main>
+        </div>
         <Footer />
       </div>
     </Router>

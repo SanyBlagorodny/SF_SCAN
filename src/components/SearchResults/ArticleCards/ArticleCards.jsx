@@ -21,7 +21,7 @@ const mockPictures = [
     mock_article_6_picture
 ];
 
-function ArticleCards({ documentsData, onLoadMore, hasMore }) {
+function ArticleCards({ documentsData, onLoadMore, hasMore, isLoading }) {
     const [articles, setArticles] = useState([]);
 
     useEffect(() => {
@@ -74,8 +74,8 @@ function ArticleCards({ documentsData, onLoadMore, hasMore }) {
             </div>
             {hasMore && (
                 <div className="button-div">
-                    <button className="button show-more" onClick={handleShowMore}>
-                        Показать больше
+                    <button className="button show-more" onClick={handleShowMore} disabled={isLoading}>
+                        {isLoading ? 'Загрузка...' : 'Показать больше'}
                     </button>
                 </div>
             )}

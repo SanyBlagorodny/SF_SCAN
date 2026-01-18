@@ -14,7 +14,7 @@ export const combineDataByDate = (data) => {
         histogram.data.forEach(item => {
             const dateKey = item.date.split('T')[0];
             if (!combinedData[dateKey]) {
-                combinedData[dateKey] = { period: formatDate(dateKey), total: 0, risks: 0 };
+                combinedData[dateKey] = { dateKey, period: formatDate(dateKey), total: 0, risks: 0 };
             }
             if (histogram.histogramType === 'totalDocuments') {
                 combinedData[dateKey].total += item.value;
@@ -24,5 +24,5 @@ export const combineDataByDate = (data) => {
         });
     });
 
-    return Object.values(combinedData).sort((a, b) => new Date(a.period) - new Date(b.period));
+    return Object.values(combinedData).sort((a, b) => new Date(a.dateKey) - new Date(b.dateKey));
 };

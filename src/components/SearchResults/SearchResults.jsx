@@ -9,7 +9,9 @@ import search_results_large_picture from '../../assets/search_results_large_pict
 
 const SearchResults = () => {
   const location = useLocation();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
+  const [isSummaryLoading, setIsSummaryLoading] = useState(true);
+  const [isDocumentsLoading, setIsDocumentsLoading] = useState(false);
   const [searchData, setSearchData] = useState(null);
   const [documentsData, setDocumentsData] = useState([]);
   const [isError, setIsError] = useState(false);
@@ -27,7 +29,7 @@ const SearchResults = () => {
     if (slice.length === 0) return;
 
     try {
-      setIsLoading(true);
+      setIsDocumentsLoading(true);
 
       const documentsResult = await searchAPI.getDocuments(slice);
       if (!documentsResult.success) {
@@ -45,7 +47,7 @@ const SearchResults = () => {
       setIsError(true);
       setErrorMessage(error.message || 'Ошибка при загрузке документов');
     } finally {
-      setIsLoading(false);
+      setIsDocumentsLoading(false);
     }
   }, [nextIndex]);
 
@@ -54,14 +56,16 @@ const SearchResults = () => {
       const searchParams = location.state?.searchParams;
       if (!searchParams) {
         console.error('Search parameters are missing.');
-        setIsLoading(false);
+        setIsInitialLoading(false);
         setIsError(true);
         setErrorMessage('Параметры поиска отсутствуют');
         return;
       }
 
-      setIsLoading(true);
+      setIsInitialLoading(true);
       setIsError(false);
+      setIsSummaryLoading(true);
+      setIsDocumentsLoading(false);
 
       try {
         // Получение сводки по датам
@@ -71,6 +75,7 @@ const SearchResults = () => {
         }
 
         setSearchData(histogramResult.data);
+        setIsSummaryLoading(false);
 
         // Получение ID публикаций
         const publicationsResult = await searchAPI.searchPublications(searchParams);
@@ -90,7 +95,8 @@ const SearchResults = () => {
         setIsError(true);
         setErrorMessage(error.message || 'Произошла ошибка при загрузке данных');
       } finally {
-        setIsLoading(false);
+        setIsSummaryLoading(false);
+        setIsInitialLoading(false);
       }
     };
 
@@ -98,7 +104,7 @@ const SearchResults = () => {
   }, [location.state?.searchParams, loadMoreDocuments]);
 
   const handleLoadMore = () => {
-    if (publicationIds.length > 0 && hasMore && !isLoading) {
+    if (publicationIds.length > 0 && hasMore && !isDocumentsLoading) {
       loadMoreDocuments(publicationIds, nextIndex);
     }
   };
@@ -126,18 +132,18 @@ const SearchResults = () => {
           </div>
         )}
 
-        {!isLoading && !isError && (
+        {!isError && (
           <>
             <GeneralSummaryTable 
               searchData={searchData} 
-              isLoading={isLoading} 
-              setIsLoading={setIsLoading} 
+              isLoading={isSummaryLoading} 
               isError={isError}
             />
             <ArticleCards 
               documentsData={documentsData} 
               onLoadMore={handleLoadMore} 
               hasMore={hasMore} 
+              isLoading={isInitialLoading || isDocumentsLoading}
             />
           </>
         )}
