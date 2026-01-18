@@ -21,15 +21,14 @@
 }
 
 .article-card {
-    width: calc(50% - 30px);
-    max-width: calc(50% - 30px);
+    width: calc(50% - 19px);
+    max-width: calc(50% - 19px);
 }
 
 .button-div {
     display: flex;
     justify-content: center;
-    margin: 50px;
-    margin-bottom: 0;
+    margin-top: 50px;
 }
 
 .show-more {
@@ -86,11 +85,10 @@
     }
     
     .button-div {
-        display: flex;
-        justify-content: center;
-        margin: 40px 0 0;
-        margin-bottom: 0;
-    }
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
     
     .show-more {
         width: 335px;

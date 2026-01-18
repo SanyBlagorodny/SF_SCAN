@@ -1,7 +1,5 @@
 .general-summary-block {
     margin-bottom: 60px;
-    padding: 0 60px;
-    box-sizing: border-box;
 }
 
 .table-and-arrows-container {
@@ -10,8 +8,9 @@
     justify-content: space-between;
     width: 100%;
     max-width: 1346px;
-    padding: 0;
+    padding: 0 60px;
     box-sizing: border-box;
+    margin: 0 auto;
 }
 
 .table-wrapper-main {
@@ -113,6 +112,29 @@
     margin-top: 3px;
 }
 
+@media (max-width: 1200px) {
+    .table-and-arrows-container {
+        padding: 0 40px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+    .table-and-arrows-container {
+        max-width: 100%;
+        padding: 0 40px;
+    }
+    
+    .table-wrapper-main {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .table-wrapper {
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+}
+
 @media (max-width: 768px) {
   .general-summary-block {
       display: flex;
@@ -124,7 +146,7 @@
   .general-summary-block .h2-search-results-page,
   .general-summary-block .p-general-summary-title-block {
       width: 100%;
-      text-align: center;
+      text-align: left;
   }
 
   .error-500-message {
@@ -132,40 +154,40 @@
   }
 
   .table-and-arrows-container {
-      position: relative;
-      max-width: 100%;
-      padding: 0;
-      justify-content: center;
-  }
+        position: relative;
+        max-width: 100%;
+        padding: 0;
+        justify-content: center;
+    }
 
-  .scroll-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 2;
-  }
+    .scroll-btn {
+        position: absolute;
+        top: 55%;
+        transform: translateY(-50%);
+        z-index: 2;
+    }
 
-  .scroll-btn.left {
-      left: 0;
-      transform: translateY(-50%) scaleX(-1);
-  }
+    .scroll-btn.left {
+        left: 0;
+        transform: translateY(-50%) scaleX(-1);
+    }
 
-  .scroll-btn.right {
-      right: 0;
-  }
+    .scroll-btn.right {
+        right: 0;
+    }
 
   .table-wrapper-main {
       display: block;
       max-width: 298px;
-      width: 100%;
-      min-width: 0;
+      width: 298px;
+      min-width: 298px;
       max-height: 140px;
       height: 140px;
       min-height: 140px;
   }
 
   .table-wrapper {
-    width: 100%;
+    width: 298px;
   }
   
   .table-headers, .table-data {
@@ -179,7 +201,7 @@
       background-color: var(--scan-green);
       color: white;
       height: 75px;
-      width: 100%;
+      width: 298px;
       margin-left: -2px;
       border-top-right-radius: 10px;
       border-bottom-left-radius: 0;
@@ -200,9 +222,9 @@
   .data-row {
       display: flex;
       flex-direction: row;
-      max-width: 100%;
-      min-width: 0;
-      width: 100%;
+      max-width: 298px;
+      min-width: 298px;
+      width: 298px;
   }
   
   

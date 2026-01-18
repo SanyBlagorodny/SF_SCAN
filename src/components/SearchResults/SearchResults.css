@@ -11,6 +11,13 @@
     margin: 0 auto;
     margin-bottom: 60px;
     box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.search-results-main {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .search-results-header {
@@ -42,12 +49,10 @@
 }
 
 .p-search-results-page {
-    font-family: Inter;
+    font-family: 'InterRegular';
     font-weight: 400;
-    font-style: Regular;
     font-size: 20px;
     line-height: 100%;
-    letter-spacing: 1%;
     color: black;
 }
 
@@ -84,6 +89,7 @@
     .search-results-content {
         padding: 110px 40px 0;
         align-items: flex-start;
+        overflow-x: hidden;
     }
 
     .search-results-header-section {
@@ -96,6 +102,8 @@
         max-width: 100%;
         margin-bottom: 0;
         padding: 0;
+        text-align: center;
+        align-items: center;
     }
 
     .h1-search-results-page {
@@ -105,6 +113,7 @@
         font-size: 32px;
         line-height: 100%;
         letter-spacing: 4%;
+        text-align: left;
     }
 
     .p-search-results-page {
@@ -115,6 +124,7 @@
         line-height: 100%;
         letter-spacing: 1%;
         color:black;
+        text-align: center;
     }
 
     .search-results-large-picture {
@@ -127,20 +137,23 @@
     .search-results-content {
         padding: 100px 14px 0;
         margin-bottom: 40px;
-        align-items: flex-start;
+        align-items: center;
+        overflow-x: hidden;
     }
 
     .search-results-header-section {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         gap: 20px;
+        width: 100%;
     }
 
     .search-results-header {
         margin-bottom: 0;
         padding: 0;
-        text-align: left;
-        align-items: flex-start;
+        text-align: center;
+        align-items: center;
+        width: 100%;
     }
 
     .h1-search-results-page {
@@ -150,6 +163,7 @@
         font-size: 28px;
         line-height: 100%;
         letter-spacing: 4%;
+        text-align: left;
     }
     
     .p-search-results-page {
@@ -160,6 +174,7 @@
         line-height: 100%;
         letter-spacing: 1%;
         color: black;
+        text-align: left;
     }
 
     .search-results-large-picture {
@@ -171,5 +186,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
+        overflow-x: hidden;
     }
 }
